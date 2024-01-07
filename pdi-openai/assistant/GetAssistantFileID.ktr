@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>CreateAssistant</name>
-    <description>Create Assistant</description>
+    <name>GetAssistantFileID</name>
+    <description>GetAssistantFileID</description>
     <extended_description>Copyright: Tech Spaghetti</extended_description>
     <trans_version/>
     <trans_type>Normal</trans_type>
@@ -428,21 +428,19 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2023/12/18 00:08:36.248</created_date>
+    <created_date>2024/01/07 15:44:21.162</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/12/18 00:08:36.248</modified_date>
+    <modified_date>2024/01/07 15:44:21.162</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>Create an OpenAI Assistant based on the configuration file.
-Set the Assistant ID as a variable after the result is generated.
-Skip Assistant creation if the ID is present in the configuration file.</note>
-      <xloc>320</xloc>
-      <yloc>32</yloc>
-      <width>410</width>
-      <heigth>58</heigth>
+      <note>Read the temp file and set the FILE_ID as variable to be used in assistant.</note>
+      <xloc>240</xloc>
+      <yloc>48</yloc>
+      <width>454</width>
+      <heigth>26</heigth>
       <fontname>.AppleSystemUIFont</fontname>
       <fontsize>13</fontsize>
       <fontbold>N</fontbold>
@@ -461,368 +459,13 @@ Skip Assistant creation if the ID is present in the configuration file.</note>
   </notepads>
   <order>
     <hop>
-      <from>JS_Question</from>
-      <to>Make an OpenAI API Call</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Make an OpenAI API Call</from>
-      <to>Parse the result</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Parse the result</from>
-      <to>Write to log</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set the API URL &amp; TOKEN</from>
-      <to>JS_Question</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Write to log</from>
+      <from>JSON input</from>
       <to>Set variables</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get variables</from>
-      <to>Check if the ASSISTANT_ID is not pre-set?</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Check if the ASSISTANT_ID is not pre-set?</from>
-      <to>Set the API URL &amp; TOKEN</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Check if the ASSISTANT_ID is not pre-set?</from>
-      <to>Write to Log - Found ASSISTANT_ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Write to Log - Found ASSISTANT_ID</from>
-      <to>Set variables - Use the AssistantID from Variable</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Check if the ASSISTANT_ID is not pre-set?</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Set the API URL &amp; TOKEN</send_true_to>
-    <send_false_to>Write to Log - Found ASSISTANT_ID</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>OPENAI_ASSISTANT_ID</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get variables</name>
-    <type>GetVariable</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>OPENAI_API_KEY</name>
-        <variable>${OPENAI_API_KEY}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>OPENAI_HOST</name>
-        <variable>${OPENAI_HOST}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>OPENAI_CONTENT_TYPE</name>
-        <variable>${OPENAI_CONTENT_TYPE}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>OPENAI_ASSISTANT_CREATE</name>
-        <variable>${OPENAI_ASSISTANT_CREATE}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>OPENAI_ASSISTANT_BETA_HEADER</name>
-        <variable>${OPENAI_ASSISTANT_BETA_HEADER}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>OPENAI_ASSISTANT_MODEL</name>
-        <variable>${OPENAI_ASSISTANT_MODEL}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>OPENAI_ASSISTANT_TYPE</name>
-        <variable>${OPENAI_ASSISTANT_TYPE}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>OPENAI_ASSISTANT_NAME</name>
-        <variable>${OPENAI_ASSISTANT_NAME}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>OPENAI_ASSISTANT_INSTRUCTION</name>
-        <variable>${OPENAI_ASSISTANT_INSTRUCTION}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>OPENAI_ASSISTANT_ID</name>
-        <variable>${OPENAI_ASSISTANT_ID}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>FILE_ID</name>
-        <variable>${FILE_ID}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>JS_Question</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-
-_data = {};
-_tool = {};
-
-_data.name=OPENAI_ASSISTANT_NAME;
-_data.instructions=OPENAI_ASSISTANT_INSTRUCTION;
-_tool.type=OPENAI_ASSISTANT_TYPE;
-
-_data.tools=[_tool];
-_data.model=OPENAI_ASSISTANT_MODEL;
-_data.file_ids=[FILE_ID];
-
-var assistant_data = JSON.stringify(_data);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>assistant_data</name>
-        <rename>assistant_data</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>320</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Make an OpenAI API Call</name>
-    <type>Rest</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <applicationType>JSON</applicationType>
-    <method>POST</method>
-    <url/>
-    <urlInField>Y</urlInField>
-    <dynamicMethod>N</dynamicMethod>
-    <methodFieldName/>
-    <urlField>url</urlField>
-    <bodyField>assistant_data</bodyField>
-    <httpLogin/>
-    <httpPassword>Encrypted </httpPassword>
-    <proxyHost/>
-    <proxyPort/>
-    <preemptive>N</preemptive>
-    <trustStoreFile/>
-    <trustStorePassword>Encrypted </trustStorePassword>
-    <headers>
-      <header>
-        <field>auth_token</field>
-        <name>Authorization</name>
-      </header>
-      <header>
-        <field>openai_content_type</field>
-        <name>Content-Type</name>
-      </header>
-      <header>
-        <field>OPENAI_ASSISTANT_BETA_HEADER</field>
-        <name>OpenAI-Beta</name>
-      </header>
-    </headers>
-    <parameters>
-      </parameters>
-    <matrixParameters>
-      </matrixParameters>
-    <result>
-      <name>result</name>
-      <code/>
-      <response_time/>
-      <response_header/>
-    </result>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>464</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Parse the result</name>
+    <name>JSON input</name>
     <type>JsonInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -845,7 +488,7 @@ var assistant_data = JSON.stringify(_data);</jsScript_script>
     <includeNulls>N</includeNulls>
     <rownum_field/>
     <file>
-      <name/>
+      <name>${Internal.Entry.Current.Directory}/output/_temp_file_id.json</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -853,8 +496,8 @@ var assistant_data = JSON.stringify(_data);</jsScript_script>
     </file>
     <fields>
       <field>
-        <name>id</name>
-        <path>$.id</path>
+        <name>object</name>
+        <path>$..object</path>
         <type>String</type>
         <format/>
         <currency/>
@@ -866,9 +509,35 @@ var assistant_data = JSON.stringify(_data);</jsScript_script>
         <repeat>N</repeat>
       </field>
       <field>
-        <name>object</name>
-        <path>$.object</path>
+        <name>id</name>
+        <path>$..id</path>
         <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>filename</name>
+        <path>$..filename</path>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>bytes</name>
+        <path>$..bytes</path>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -880,8 +549,8 @@ var assistant_data = JSON.stringify(_data);</jsScript_script>
       </field>
       <field>
         <name>created_at</name>
-        <path>$.created_at</path>
-        <type>String</type>
+        <path>$..created_at</path>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -892,73 +561,8 @@ var assistant_data = JSON.stringify(_data);</jsScript_script>
         <repeat>N</repeat>
       </field>
       <field>
-        <name>name</name>
-        <path>$.name</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>description</name>
-        <path>$.description</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>model</name>
-        <path>$.model</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>instructions</name>
-        <path>$.instructions</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>tools</name>
-        <path>$.tools</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>file_ids</name>
-        <path>$.file_ids</path>
+        <name>status</name>
+        <path>$..status</path>
         <type>String</type>
         <format/>
         <currency/>
@@ -971,9 +575,9 @@ var assistant_data = JSON.stringify(_data);</jsScript_script>
       </field>
     </fields>
     <limit>0</limit>
-    <IsInFields>Y</IsInFields>
+    <IsInFields>N</IsInFields>
     <IsAFile>N</IsAFile>
-    <valueField>result</valueField>
+    <valueField/>
     <shortFileFieldName/>
     <pathFieldName/>
     <hiddenFieldName/>
@@ -991,49 +595,8 @@ var assistant_data = JSON.stringify(_data);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set the API URL &amp; TOKEN</name>
-    <type>Janino</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>url</field_name>
-      <formula_string>OPENAI_HOST + OPENAI_ASSISTANT_CREATE</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <formula>
-      <field_name>auth_token</field_name>
-      <formula_string>"Bearer "+ OPENAI_API_KEY</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>336</yloc>
+      <xloc>288</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1051,7 +614,7 @@ var assistant_data = JSON.stringify(_data);</jsScript_script>
     <fields>
       <field>
         <field_name>id</field_name>
-        <variable_name>ASSISTANT_ID</variable_name>
+        <variable_name>FILE_ID</variable_name>
         <variable_type>ROOT_JOB</variable_type>
         <default_value/>
       </field>
@@ -1066,137 +629,8 @@ var assistant_data = JSON.stringify(_data);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set variables - Use the AssistantID from Variable</name>
-    <type>SetVariable</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <field_name>OPENAI_ASSISTANT_ID</field_name>
-        <variable_name>ASSISTANT_ID</variable_name>
-        <variable_type>ROOT_JOB</variable_type>
-        <default_value/>
-      </field>
-    </fields>
-    <use_formatting>Y</use_formatting>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Write to Log - Found ASSISTANT_ID</name>
-    <type>WriteToLog</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <loglevel>log_level_basic</loglevel>
-    <displayHeader>Y</displayHeader>
-    <limitRows>N</limitRows>
-    <limitRowsNumber>0</limitRowsNumber>
-    <logmessage>Found ASSISTANT_ID in the Configuration File. 
-Skipping creation of the OpenAI Assistant.</logmessage>
-    <fields>
-      <field>
-        <name>OPENAI_ASSISTANT_ID</name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Write to log</name>
-    <type>WriteToLog</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <loglevel>log_level_basic</loglevel>
-    <displayHeader>Y</displayHeader>
-    <limitRows>N</limitRows>
-    <limitRowsNumber>0</limitRowsNumber>
-    <logmessage>Creating a new OpenAI Assistant</logmessage>
-    <fields>
-      <field>
-        <name>id</name>
-      </field>
-      <field>
-        <name>object</name>
-      </field>
-      <field>
-        <name>created_at</name>
-      </field>
-      <field>
-        <name>name</name>
-      </field>
-      <field>
-        <name>description</name>
-      </field>
-      <field>
-        <name>model</name>
-      </field>
-      <field>
-        <name>instructions</name>
-      </field>
-      <field>
-        <name>tools</name>
-      </field>
-      <field>
-        <name>file_ids</name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>784</xloc>
-      <yloc>336</yloc>
+      <xloc>608</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

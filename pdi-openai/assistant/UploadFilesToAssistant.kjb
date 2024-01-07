@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>AssistantRunStatusCheck</name>
-  <description>Assistant Run Status Check</description>
+  <name>UploadFilesToAssistant</name>
+  <description>Upload Files to Assistant</description>
   <extended_description>Copyright: Tech Spaghetti</extended_description>
   <job_version/>
   <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
-  <created_date>2023/12/18 21:28:47.352</created_date>
+  <created_date>2024/01/06 23:31:39.341</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2023/12/18 21:28:47.352</modified_date>
+  <modified_date>2024/01/06 23:31:39.341</modified_date>
   <parameters>
     </parameters>
   <slaveservers>
@@ -372,18 +372,61 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>224</xloc>
-      <yloc>208</yloc>
+      <xloc>64</xloc>
+      <yloc>128</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Check Run Status</name>
+      <name>Upload File to OpenAI</name>
+      <description/>
+      <type>SHELL</type>
+      <attributes/>
+      <filename/>
+      <work_directory>${Internal.Entry.Current.Directory}</work_directory>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <set_append_logfile>N</set_append_logfile>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>CWD=`pwd`
+echo $CWD
+
+curl --silent ${OPENAI_HOST}${OPENAI_UPLOAD_FILES} \
+  -H "Authorization: Bearer ${OPENAI_API_KEY}" \
+  -F purpose="assistants" \
+  -F file="@$CWD/input/sample.csv" > $CWD/output/_temp_file_id.json</script>
+      <loglevel>Basic</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>352</xloc>
+      <yloc>128</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Success</name>
+      <description/>
+      <type>SUCCESS</type>
+      <attributes/>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>816</xloc>
+      <yloc>128</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Get Assistant File ID</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Entry.Current.Directory}/CheckRunStatus.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/GetAssistantFileID.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -411,74 +454,68 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>352</xloc>
-      <yloc>208</yloc>
+      <xloc>496</xloc>
+      <yloc>128</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Check if the STATUS = completed?</name>
+      <name>Remove the Temp file</name>
+      <description/>
+      <type>DELETE_FILE</type>
+      <attributes/>
+      <filename>${Internal.Entry.Current.Directory}/output/_temp_file_id.json</filename>
+      <fail_if_file_not_exists>N</fail_if_file_not_exists>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>640</xloc>
+      <yloc>128</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Simple evaluation</name>
       <description/>
       <type>SIMPLE_EVAL</type>
       <attributes/>
       <valuetype>variable</valuetype>
       <fieldname/>
-      <variablename>${STATUS}</variablename>
+      <variablename>${OPENAI_ASSISTANT_FILE_ID}</variablename>
       <fieldtype>string</fieldtype>
       <mask/>
-      <comparevalue>completed</comparevalue>
+      <comparevalue>file-</comparevalue>
       <minvalue/>
       <maxvalue/>
-      <successcondition>equal</successcondition>
+      <successcondition>notstatwith</successcondition>
       <successnumbercondition>equal</successnumbercondition>
       <successbooleancondition>false</successbooleancondition>
       <successwhenvarset>N</successwhenvarset>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>544</xloc>
-      <yloc>208</yloc>
+      <xloc>176</xloc>
+      <yloc>128</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Wait for 5s</name>
+      <name>Logging FileID</name>
       <description/>
-      <type>DELAY</type>
+      <type>WRITE_TO_LOG</type>
       <attributes/>
-      <maximumTimeout>5</maximumTimeout>
-      <scaletime>0</scaletime>
+      <logmessage>File ID ${OPENAI_ASSISTANT_FILE_ID} is found. Hence skipping uploading new files.</logmessage>
+      <loglevel>Basic</loglevel>
+      <logsubject/>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>464</xloc>
-      <yloc>336</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>Success</name>
-      <description/>
-      <type>SUCCESS</type>
-      <attributes/>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>720</xloc>
-      <yloc>208</yloc>
+      <xloc>176</xloc>
+      <yloc>256</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
   <hops>
     <hop>
-      <from>Start</from>
-      <to>Check Run Status</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>Check Run Status</from>
-      <to>Check if the STATUS = completed?</to>
+      <from>Upload File to OpenAI</from>
+      <to>Get Assistant File ID</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -486,17 +523,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Check if the STATUS = completed?</from>
-      <to>Wait for 5s</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Wait for 5s</from>
-      <to>Check Run Status</to>
+      <from>Get Assistant File ID</from>
+      <to>Remove the Temp file</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -504,7 +532,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Check if the STATUS = completed?</from>
+      <from>Remove the Temp file</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -512,30 +540,35 @@
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
+    <hop>
+      <from>Start</from>
+      <to>Simple evaluation</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Simple evaluation</from>
+      <to>Upload File to OpenAI</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Simple evaluation</from>
+      <to>Logging FileID</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
   </hops>
   <notepads>
-    <notepad>
-      <note>Job to check and wait for the RUN Assistant to complete the job.
-Success when the RUN STATUS = completed.</note>
-      <xloc>256</xloc>
-      <yloc>96</yloc>
-      <width>401</width>
-      <heigth>42</heigth>
-      <fontname>.AppleSystemUIFont</fontname>
-      <fontsize>13</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <attributes>
     <group>

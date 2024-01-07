@@ -2,8 +2,8 @@
 <transformation>
   <info>
     <name>ChatModel</name>
-    <description/>
-    <extended_description/>
+    <description>Simple Chat Model</description>
+    <extended_description>Copyright: Tech Spaghetti</extended_description>
     <trans_version/>
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
@@ -11,7 +11,7 @@
     <parameters>
       <parameter>
         <name>OPENAI_API_KEY</name>
-        <default_value/>
+        <default_value>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</default_value>
         <description/>
       </parameter>
       <parameter>

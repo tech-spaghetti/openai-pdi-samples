@@ -1,0 +1,404 @@
+2024/01/07 19:57:16 - Create Assistant & Load Custom Data - Using run configuration [Pentaho local]
+2024/01/07 19:57:16 - Create Assistant & Load Custom Data - License validated.
+2024/01/07 19:57:16 - AssistantCreation - Starting entry [UploadFilesToAssistant]
+2024/01/07 19:57:16 - UploadFilesToAssistant - Using run configuration [Pentaho local]
+2024/01/07 19:57:16 - UploadFilesToAssistant - License validated.
+2024/01/07 19:57:16 - UploadFilesToAssistant - Starting entry [Simple evaluation]
+2024/01/07 19:57:16 - UploadFilesToAssistant - Starting entry [Upload File to OpenAI]
+2024/01/07 19:57:16 - Upload File to OpenAI - Running on platform : Mac OS X
+2024/01/07 19:57:16 - Upload File to OpenAI - Executing command : /var/folders/5c/pfmc_q2j07j52ctymsl_cjy80000gp/T/kettle_f56e4c67-ad96-11ee-8eda-618e2f56fc2fshell
+2024/01/07 19:57:16 - Upload File to OpenAI - (stdout) /Users/rishushrivastava/Document/GitHub/openai-pdi-samples/pdi-openai/assistant
+2024/01/07 19:57:17 - UploadFilesToAssistant - Starting entry [Get Assistant File ID]
+2024/01/07 19:57:17 - Get Assistant File ID - Using run configuration [Pentaho local]
+2024/01/07 19:57:17 - GetAssistantFileID - License validated.
+2024/01/07 19:57:17 - GetAssistantFileID - Dispatching started for transformation [GetAssistantFileID]
+2024/01/07 19:57:17 - JSON input.0 - Finished processing (I=1, O=0, R=0, W=1, U=0, E=0)
+2024/01/07 19:57:17 - Set variables.0 - Setting environment variables...
+2024/01/07 19:57:17 - Set variables.0 - Set variable FILE_ID to value [file-r3AFVoBlJKP5gJwtL2vU9jXv]
+2024/01/07 19:57:17 - Set variables.0 - Finished after 1 rows.
+2024/01/07 19:57:17 - Set variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:17 - UploadFilesToAssistant - Starting entry [Remove the Temp file]
+2024/01/07 19:57:17 - Remove the Temp file - File [file:///Users/rishushrivastava/Document/GitHub/openai-pdi-samples/pdi-openai/assistant/output/_temp_file_id.json] deleted!
+2024/01/07 19:57:17 - UploadFilesToAssistant - Starting entry [Success]
+2024/01/07 19:57:17 - UploadFilesToAssistant - Finished job entry [Success] (result=[true])
+2024/01/07 19:57:17 - UploadFilesToAssistant - Finished job entry [Remove the Temp file] (result=[true])
+2024/01/07 19:57:17 - UploadFilesToAssistant - Finished job entry [Get Assistant File ID] (result=[true])
+2024/01/07 19:57:17 - UploadFilesToAssistant - Finished job entry [Upload File to OpenAI] (result=[true])
+2024/01/07 19:57:17 - UploadFilesToAssistant - Finished job entry [Simple evaluation] (result=[true])
+2024/01/07 19:57:17 - AssistantCreation - Starting entry [Create OpenAI Assistant]
+2024/01/07 19:57:17 - Create OpenAI Assistant - Using run configuration [Pentaho local]
+2024/01/07 19:57:17 - CreateAssistant - License validated.
+2024/01/07 19:57:17 - CreateAssistant - Dispatching started for transformation [CreateAssistant]
+2024/01/07 19:57:17 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:17 - Check if the ASSISTANT_ID is not pre-set?.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:17 - JS_Question.0 - Optimization level set to 9.
+2024/01/07 19:57:17 - Set variables - Use the AssistantID from Variable.0 - We didn't receive a row while setting the default values.
+2024/01/07 19:57:17 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:17 - Set variables - Use the AssistantID from Variable.0 - Finished after 0 rows.
+2024/01/07 19:57:17 - JS_Question.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:18 - Write to log.0 - 
+2024/01/07 19:57:18 - Write to log.0 - ------------> Linenr 1------------------------------
+2024/01/07 19:57:18 - Write to log.0 - Creating a new OpenAI Assistant
+2024/01/07 19:57:18 - Write to log.0 - 
+2024/01/07 19:57:18 - Write to log.0 - id = asst_o2QSa4HqJEBI1XYXbKWuRD2u
+2024/01/07 19:57:18 - Write to log.0 - object = assistant
+2024/01/07 19:57:18 - Write to log.0 - created_at = 1704657438
+2024/01/07 19:57:18 - Write to log.0 - name = My Personal Analytical Assistant
+2024/01/07 19:57:18 - Write to log.0 - description = null
+2024/01/07 19:57:18 - Write to log.0 - model = gpt-3.5-turbo
+2024/01/07 19:57:18 - Write to log.0 - instructions = You will decode csv files as a table and generate analytical queries for me.
+2024/01/07 19:57:18 - Write to log.0 - tools = [{"type":"code_interpreter"}]
+2024/01/07 19:57:18 - Write to log.0 - file_ids = ["file-r3AFVoBlJKP5gJwtL2vU9jXv"]
+2024/01/07 19:57:18 - Write to log.0 - 
+2024/01/07 19:57:18 - Write to log.0 - ====================
+2024/01/07 19:57:18 - Set variables.0 - Setting environment variables...
+2024/01/07 19:57:18 - Set variables.0 - Set variable ASSISTANT_ID to value [asst_o2QSa4HqJEBI1XYXbKWuRD2u]
+2024/01/07 19:57:18 - Make an OpenAI API Call.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:18 - Parse the result.0 - Finished processing (I=1, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:18 - Write to log.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:18 - Set variables.0 - Finished after 1 rows.
+2024/01/07 19:57:18 - Set variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:18 - AssistantCreation - Starting entry [Success]
+2024/01/07 19:57:18 - AssistantCreation - Finished job entry [Success] (result=[true])
+2024/01/07 19:57:18 - AssistantCreation - Finished job entry [Create OpenAI Assistant] (result=[true])
+2024/01/07 19:57:18 - AssistantCreation - Finished job entry [UploadFilesToAssistant] (result=[true])
+2024/01/07 19:57:22 - Run Assistant - Using run configuration [Pentaho local]
+2024/01/07 19:57:22 - RunAssistant - License validated.
+2024/01/07 19:57:22 - RunAssistant - Dispatching started for transformation [RunAssistant]
+2024/01/07 19:57:22 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:22 - JS_Run.0 - Optimization level set to 9.
+2024/01/07 19:57:22 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:22 - JS_Run.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:23 - Write to log.0 - 
+2024/01/07 19:57:23 - Write to log.0 - ------------> Linenr 1------------------------------
+2024/01/07 19:57:23 - Write to log.0 - Run the Assistant
+2024/01/07 19:57:23 - Write to log.0 - 
+2024/01/07 19:57:23 - Write to log.0 - run_id = run_OAptaX4roFuiQQ2J3ka4M6ct
+2024/01/07 19:57:23 - Write to log.0 - object = thread.run
+2024/01/07 19:57:23 - Write to log.0 - created_at = 1704657443
+2024/01/07 19:57:23 - Write to log.0 - ASSISTANT_ID = asst_o2QSa4HqJEBI1XYXbKWuRD2u
+2024/01/07 19:57:23 - Write to log.0 - THREAD_ID = thread_wq5SGM6RUzuxzEulMcbpP4vO
+2024/01/07 19:57:23 - Write to log.0 - status = queued
+2024/01/07 19:57:23 - Write to log.0 - started_at = null
+2024/01/07 19:57:23 - Write to log.0 - expires_at = 1704658043
+2024/01/07 19:57:23 - Write to log.0 - cancelled_at = null
+2024/01/07 19:57:23 - Write to log.0 - failed_at = null
+2024/01/07 19:57:23 - Write to log.0 - completed_at = null
+2024/01/07 19:57:23 - Write to log.0 - last_error = null
+2024/01/07 19:57:23 - Write to log.0 - model = gpt-3.5-turbo
+2024/01/07 19:57:23 - Write to log.0 - instructions = Please address the user as Data Analyst.
+2024/01/07 19:57:23 - Write to log.0 - tools = [{"type":"code_interpreter"}]
+2024/01/07 19:57:23 - Write to log.0 - file_ids = ["file-r3AFVoBlJKP5gJwtL2vU9jXv"]
+2024/01/07 19:57:23 - Write to log.0 - metadata = {}
+2024/01/07 19:57:23 - Write to log.0 - 
+2024/01/07 19:57:23 - Write to log.0 - ====================
+2024/01/07 19:57:23 - Set variables.0 - Setting environment variables...
+2024/01/07 19:57:23 - Make an OpenAI API Call - Run.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:23 - Set variables.0 - Set variable RUN_ID to value [run_OAptaX4roFuiQQ2J3ka4M6ct]
+2024/01/07 19:57:23 - Set variables.0 - Set variable RUN_STATUS to value [queued]
+2024/01/07 19:57:23 - Parse the result.0 - Finished processing (I=1, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:23 - RUN_ID is not null?.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:23 - Write to log.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:23 - Set variables.0 - Finished after 1 rows.
+2024/01/07 19:57:23 - Set variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:23 - Run Assistant - Using run configuration [Pentaho local]
+2024/01/07 19:57:23 - RunAssistant - License validated.
+2024/01/07 19:57:23 - RunAssistant - Dispatching started for transformation [RunAssistant]
+2024/01/07 19:57:23 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:23 - JS_Run.0 - Optimization level set to 9.
+2024/01/07 19:57:23 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:23 - JS_Run.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - Make an OpenAI API Call - Run.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - Parse the result.0 - Finished processing (I=1, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - RUN_ID is not null?.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - Ignore.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - Set variables.0 - We didn't receive a row while setting the default values.
+2024/01/07 19:57:24 - Set variables.0 - Finished after 0 rows.
+2024/01/07 19:57:23 - Check Assistant Run Status - Using run configuration [Pentaho local]
+2024/01/07 19:57:23 - Check Assistant Run Status - License validated.
+2024/01/07 19:57:23 - AssistantRunStatusCheck - Starting entry [Check Run Status]
+2024/01/07 19:57:23 - Check Run Status - Using run configuration [Pentaho local]
+2024/01/07 19:57:23 - CheckRunStatus - License validated.
+2024/01/07 19:57:23 - CheckRunStatus - Dispatching started for transformation [CheckRunStatus]
+2024/01/07 19:57:23 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:23 - JS_Response.0 - Optimization level set to 9.
+2024/01/07 19:57:23 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:23 - JS_Response.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - Write to log.0 - 
+2024/01/07 19:57:24 - Write to log.0 - ------------> Linenr 1------------------------------
+2024/01/07 19:57:24 - Write to log.0 - Check the Run Status of the Assistant Run.
+2024/01/07 19:57:24 - Write to log.0 - 
+2024/01/07 19:57:24 - Write to log.0 - url = https://api.openai.com/v1/threads/thread_wq5SGM6RUzuxzEulMcbpP4vO/runs/run_OAptaX4roFuiQQ2J3ka4M6ct
+2024/01/07 19:57:24 - Write to log.0 - status = in_progress
+2024/01/07 19:57:24 - Write to log.0 - 
+2024/01/07 19:57:24 - Write to log.0 - ====================
+2024/01/07 19:57:24 - Set variables.0 - Setting environment variables...
+2024/01/07 19:57:24 - Set variables.0 - Set variable STATUS to value [in_progress]
+2024/01/07 19:57:24 - Make an OpenAI API Call - Run Status.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - Parse the result.0 - Finished processing (I=1, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - Write to log.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - Set variables.0 - Finished after 1 rows.
+2024/01/07 19:57:24 - Set variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - AssistantRunStatusCheck - Starting entry [Check if the STATUS = completed?]
+2024/01/07 19:57:24 - AssistantRunStatusCheck - Starting entry [Wait for 5s]
+2024/01/07 19:57:24 - Check Assistant Run Status - Using run configuration [Pentaho local]
+2024/01/07 19:57:24 - Check Assistant Run Status - License validated.
+2024/01/07 19:57:24 - AssistantRunStatusCheck - Starting entry [Check Run Status]
+2024/01/07 19:57:24 - Check Run Status - Using run configuration [Pentaho local]
+2024/01/07 19:57:24 - CheckRunStatus - License validated.
+2024/01/07 19:57:24 - CheckRunStatus - Dispatching started for transformation [CheckRunStatus]
+2024/01/07 19:57:24 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - JS_Response.0 - Optimization level set to 9.
+2024/01/07 19:57:24 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:24 - JS_Response.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:25 - Write to log.0 - 
+2024/01/07 19:57:25 - Write to log.0 - ------------> Linenr 1------------------------------
+2024/01/07 19:57:25 - Write to log.0 - Check the Run Status of the Assistant Run.
+2024/01/07 19:57:25 - Write to log.0 - 
+2024/01/07 19:57:25 - Write to log.0 - url = https://api.openai.com/v1/threads/thread_wq5SGM6RUzuxzEulMcbpP4vO/runs/run_OAptaX4roFuiQQ2J3ka4M6ct
+2024/01/07 19:57:25 - Write to log.0 - status = in_progress
+2024/01/07 19:57:25 - Write to log.0 - 
+2024/01/07 19:57:25 - Write to log.0 - ====================
+2024/01/07 19:57:25 - Set variables.0 - Setting environment variables...
+2024/01/07 19:57:25 - Set variables.0 - Set variable STATUS to value [in_progress]
+2024/01/07 19:57:25 - Make an OpenAI API Call - Run Status.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:25 - Parse the result.0 - Finished processing (I=1, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:25 - Write to log.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:25 - Set variables.0 - Finished after 1 rows.
+2024/01/07 19:57:25 - Set variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:25 - AssistantRunStatusCheck - Starting entry [Check if the STATUS = completed?]
+2024/01/07 19:57:25 - AssistantRunStatusCheck - Starting entry [Wait for 5s]
+2024/01/07 19:57:29 - AssistantRunStatusCheck - Starting entry [Check Run Status]
+2024/01/07 19:57:29 - Check Run Status - Using run configuration [Pentaho local]
+2024/01/07 19:57:29 - CheckRunStatus - License validated.
+2024/01/07 19:57:29 - CheckRunStatus - Dispatching started for transformation [CheckRunStatus]
+2024/01/07 19:57:29 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:29 - JS_Response.0 - Optimization level set to 9.
+2024/01/07 19:57:29 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:29 - JS_Response.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:29 - Write to log.0 - 
+2024/01/07 19:57:29 - Write to log.0 - ------------> Linenr 1------------------------------
+2024/01/07 19:57:29 - Write to log.0 - Check the Run Status of the Assistant Run.
+2024/01/07 19:57:29 - Write to log.0 - 
+2024/01/07 19:57:29 - Write to log.0 - url = https://api.openai.com/v1/threads/thread_wq5SGM6RUzuxzEulMcbpP4vO/runs/run_OAptaX4roFuiQQ2J3ka4M6ct
+2024/01/07 19:57:29 - Write to log.0 - status = in_progress
+2024/01/07 19:57:29 - Write to log.0 - 
+2024/01/07 19:57:29 - Write to log.0 - ====================
+2024/01/07 19:57:29 - Set variables.0 - Setting environment variables...
+2024/01/07 19:57:29 - Set variables.0 - Set variable STATUS to value [in_progress]
+2024/01/07 19:57:29 - Make an OpenAI API Call - Run Status.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:29 - Parse the result.0 - Finished processing (I=1, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:29 - Write to log.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:29 - Set variables.0 - Finished after 1 rows.
+2024/01/07 19:57:29 - Set variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:29 - AssistantRunStatusCheck - Starting entry [Check if the STATUS = completed?]
+2024/01/07 19:57:29 - AssistantRunStatusCheck - Starting entry [Wait for 5s]
+2024/01/07 19:57:30 - AssistantRunStatusCheck - Starting entry [Check Run Status]
+2024/01/07 19:57:30 - Check Run Status - Using run configuration [Pentaho local]
+2024/01/07 19:57:30 - CheckRunStatus - License validated.
+2024/01/07 19:57:30 - CheckRunStatus - Dispatching started for transformation [CheckRunStatus]
+2024/01/07 19:57:30 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:30 - JS_Response.0 - Optimization level set to 9.
+2024/01/07 19:57:30 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:30 - JS_Response.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:31 - Write to log.0 - 
+2024/01/07 19:57:31 - Write to log.0 - ------------> Linenr 1------------------------------
+2024/01/07 19:57:31 - Write to log.0 - Check the Run Status of the Assistant Run.
+2024/01/07 19:57:31 - Write to log.0 - 
+2024/01/07 19:57:31 - Write to log.0 - url = https://api.openai.com/v1/threads/thread_wq5SGM6RUzuxzEulMcbpP4vO/runs/run_OAptaX4roFuiQQ2J3ka4M6ct
+2024/01/07 19:57:31 - Write to log.0 - status = in_progress
+2024/01/07 19:57:31 - Write to log.0 - 
+2024/01/07 19:57:31 - Write to log.0 - ====================
+2024/01/07 19:57:31 - Set variables.0 - Setting environment variables...
+2024/01/07 19:57:31 - Set variables.0 - Set variable STATUS to value [in_progress]
+2024/01/07 19:57:31 - Make an OpenAI API Call - Run Status.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:31 - Parse the result.0 - Finished processing (I=1, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:31 - Write to log.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:31 - Set variables.0 - Finished after 1 rows.
+2024/01/07 19:57:31 - Set variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:31 - AssistantRunStatusCheck - Starting entry [Check if the STATUS = completed?]
+2024/01/07 19:57:31 - AssistantRunStatusCheck - Starting entry [Wait for 5s]
+2024/01/07 19:57:34 - AssistantRunStatusCheck - Starting entry [Check Run Status]
+2024/01/07 19:57:35 - AssistantRunStatusCheck - Starting entry [Check if the STATUS = completed?]
+2024/01/07 19:57:35 - AssistantRunStatusCheck - Starting entry [Wait for 5s]
+2024/01/07 19:57:34 - Check Run Status - Using run configuration [Pentaho local]
+2024/01/07 19:57:35 - CheckRunStatus - License validated.
+2024/01/07 19:57:35 - CheckRunStatus - Dispatching started for transformation [CheckRunStatus]
+2024/01/07 19:57:35 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:35 - JS_Response.0 - Optimization level set to 9.
+2024/01/07 19:57:35 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:35 - JS_Response.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:35 - Write to log.0 - 
+2024/01/07 19:57:35 - Write to log.0 - ------------> Linenr 1------------------------------
+2024/01/07 19:57:35 - Write to log.0 - Check the Run Status of the Assistant Run.
+2024/01/07 19:57:35 - Write to log.0 - 
+2024/01/07 19:57:35 - Write to log.0 - url = https://api.openai.com/v1/threads/thread_wq5SGM6RUzuxzEulMcbpP4vO/runs/run_OAptaX4roFuiQQ2J3ka4M6ct
+2024/01/07 19:57:35 - Write to log.0 - status = in_progress
+2024/01/07 19:57:35 - Write to log.0 - 
+2024/01/07 19:57:35 - Write to log.0 - ====================
+2024/01/07 19:57:35 - Set variables.0 - Setting environment variables...
+2024/01/07 19:57:35 - Set variables.0 - Set variable STATUS to value [in_progress]
+2024/01/07 19:57:35 - Make an OpenAI API Call - Run Status.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:35 - Parse the result.0 - Finished processing (I=1, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:35 - Write to log.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:35 - Set variables.0 - Finished after 1 rows.
+2024/01/07 19:57:35 - Set variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:36 - AssistantRunStatusCheck - Starting entry [Check Run Status]
+2024/01/07 19:57:36 - Check Run Status - Using run configuration [Pentaho local]
+2024/01/07 19:57:36 - CheckRunStatus - License validated.
+2024/01/07 19:57:36 - CheckRunStatus - Dispatching started for transformation [CheckRunStatus]
+2024/01/07 19:57:36 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:36 - JS_Response.0 - Optimization level set to 9.
+2024/01/07 19:57:36 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:36 - JS_Response.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:37 - Write to log.0 - 
+2024/01/07 19:57:37 - Write to log.0 - ------------> Linenr 1------------------------------
+2024/01/07 19:57:37 - Write to log.0 - Check the Run Status of the Assistant Run.
+2024/01/07 19:57:37 - Write to log.0 - 
+2024/01/07 19:57:37 - Write to log.0 - url = https://api.openai.com/v1/threads/thread_wq5SGM6RUzuxzEulMcbpP4vO/runs/run_OAptaX4roFuiQQ2J3ka4M6ct
+2024/01/07 19:57:37 - Write to log.0 - status = in_progress
+2024/01/07 19:57:37 - Write to log.0 - 
+2024/01/07 19:57:37 - Write to log.0 - ====================
+2024/01/07 19:57:37 - Set variables.0 - Setting environment variables...
+2024/01/07 19:57:37 - Set variables.0 - Set variable STATUS to value [in_progress]
+2024/01/07 19:57:37 - Make an OpenAI API Call - Run Status.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:37 - Parse the result.0 - Finished processing (I=1, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:37 - Write to log.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:37 - Set variables.0 - Finished after 1 rows.
+2024/01/07 19:57:37 - Set variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:37 - AssistantRunStatusCheck - Starting entry [Check if the STATUS = completed?]
+2024/01/07 19:57:37 - AssistantRunStatusCheck - Starting entry [Wait for 5s]
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Starting entry [Check Run Status]
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Starting entry [Check if the STATUS = completed?]
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Starting entry [Success]
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Success] (result=[true])
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Check if the STATUS = completed?] (result=[true])
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Check Run Status] (result=[true])
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Wait for 5s] (result=[true])
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Check if the STATUS = completed?] (result=[true])
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Check Run Status] (result=[true])
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Wait for 5s] (result=[true])
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Check if the STATUS = completed?] (result=[true])
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Check Run Status] (result=[true])
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Wait for 5s] (result=[true])
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Check if the STATUS = completed?] (result=[true])
+2024/01/07 19:57:40 - AssistantRunStatusCheck - Finished job entry [Check Run Status] (result=[true])
+2024/01/07 19:57:40 - Check Run Status - Using run configuration [Pentaho local]
+2024/01/07 19:57:40 - CheckRunStatus - License validated.
+2024/01/07 19:57:40 - CheckRunStatus - Dispatching started for transformation [CheckRunStatus]
+2024/01/07 19:57:40 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:40 - JS_Response.0 - Optimization level set to 9.
+2024/01/07 19:57:40 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:40 - JS_Response.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:40 - Write to log.0 - 
+2024/01/07 19:57:40 - Write to log.0 - ------------> Linenr 1------------------------------
+2024/01/07 19:57:40 - Write to log.0 - Check the Run Status of the Assistant Run.
+2024/01/07 19:57:40 - Write to log.0 - 
+2024/01/07 19:57:40 - Write to log.0 - url = https://api.openai.com/v1/threads/thread_wq5SGM6RUzuxzEulMcbpP4vO/runs/run_OAptaX4roFuiQQ2J3ka4M6ct
+2024/01/07 19:57:40 - Write to log.0 - status = completed
+2024/01/07 19:57:40 - Write to log.0 - 
+2024/01/07 19:57:40 - Write to log.0 - ====================
+2024/01/07 19:57:40 - Set variables.0 - Setting environment variables...
+2024/01/07 19:57:40 - Set variables.0 - Set variable STATUS to value [completed]
+2024/01/07 19:57:40 - Make an OpenAI API Call - Run Status.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:40 - Parse the result.0 - Finished processing (I=1, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:40 - Write to log.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:40 - Set variables.0 - Finished after 1 rows.
+2024/01/07 19:57:40 - Set variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:40 - Display Message - Using run configuration [Pentaho local]
+2024/01/07 19:57:40 - DisplayMessage - License validated.
+2024/01/07 19:57:40 - DisplayMessage - Dispatching started for transformation [DisplayMessage]
+2024/01/07 19:57:40 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:40 - JS_Response.0 - Optimization level set to 9.
+2024/01/07 19:57:40 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:40 - JS_Response.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:41 - Write to log.0 - 
+2024/01/07 19:57:41 - Write to log.0 - ------------> Linenr 1------------------------------
+2024/01/07 19:57:41 - Write to log.0 - Response from the Assistant
+2024/01/07 19:57:41 - Write to log.0 - 
+2024/01/07 19:57:41 - Write to log.0 - content_type = text
+2024/01/07 19:57:41 - Write to log.0 - content = The average salary of the users working in the company, considering only the users where the Name is not null, is $1,025.
+2024/01/07 19:57:41 - Write to log.0 - 
+2024/01/07 19:57:41 - Write to log.0 - ====================
+2024/01/07 19:57:41 - Make an OpenAI API Call - Response.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:41 - Write to log.0 - 
+2024/01/07 19:57:41 - Write to log.0 - ------------> Linenr 2------------------------------
+2024/01/07 19:57:41 - Write to log.0 - Response from the Assistant
+2024/01/07 19:57:41 - Write to log.0 - 
+2024/01/07 19:57:41 - Write to log.0 - content_type = text
+2024/01/07 19:57:41 - Write to log.0 - content = The data consists of four columns: ID, Name, Age, and Salary. Now, let's calculate the average salary of the users working in the company where the Name of the users is not null.
+2024/01/07 19:57:41 - Write to log.0 - 
+2024/01/07 19:57:41 - Write to log.0 - Note: We will consider only the rows where the Name column is not null for calculating the average salary.
+2024/01/07 19:57:41 - Write to log.0 - 
+2024/01/07 19:57:41 - Write to log.0 - ====================
+2024/01/07 19:57:41 - Write to log.0 - 
+2024/01/07 19:57:41 - Write to log.0 - ------------> Linenr 3------------------------------
+2024/01/07 19:57:41 - Write to log.0 - Response from the Assistant
+2024/01/07 19:57:41 - Write to log.0 - 
+2024/01/07 19:57:41 - Write to log.0 - content_type = text
+2024/01/07 19:57:41 - Write to log.0 - content = Sure, I can help you with that. Let's start by loading the data from the uploaded file and analyzing it to calculate the average salary.
+2024/01/07 19:57:41 - Write to log.0 - 
+2024/01/07 19:57:41 - Write to log.0 - First, let's read the data from the file and inspect the structure of the data.
+2024/01/07 19:57:41 - Write to log.0 - 
+2024/01/07 19:57:41 - Write to log.0 - ====================
+2024/01/07 19:57:41 - Parse the result.0 - Finished processing (I=4, O=0, R=1, W=4, U=0, E=0)
+2024/01/07 19:57:41 - Filter rows.0 - Finished processing (I=0, O=0, R=4, W=4, U=0, E=0)
+2024/01/07 19:57:41 - Write to log.0 - Finished processing (I=0, O=0, R=3, W=3, U=0, E=0)
+2024/01/07 19:57:41 - Dummy (do nothing).0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:41 - JSON output.0 - Finished processing (I=0, O=3, R=3, W=3, U=0, E=0)
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Starting entry [Check Run Status]
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Starting entry [Check if the STATUS = completed?]
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Starting entry [Success]
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Success] (result=[true])
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Check if the STATUS = completed?] (result=[true])
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Check Run Status] (result=[true])
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Wait for 5s] (result=[true])
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Check if the STATUS = completed?] (result=[true])
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Check Run Status] (result=[true])
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Wait for 5s] (result=[true])
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Check if the STATUS = completed?] (result=[true])
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Check Run Status] (result=[true])
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Wait for 5s] (result=[true])
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Check if the STATUS = completed?] (result=[true])
+2024/01/07 19:57:42 - AssistantRunStatusCheck - Finished job entry [Check Run Status] (result=[true])
+2024/01/07 19:57:42 - Display Message - Using run configuration [Pentaho local]
+2024/01/07 19:57:42 - DisplayMessage - License validated.
+2024/01/07 19:57:42 - DisplayMessage - Dispatching started for transformation [DisplayMessage]
+2024/01/07 19:57:42 - Get variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:43 - JS_Response.0 - Optimization level set to 9.
+2024/01/07 19:57:43 - Set the API URL & TOKEN.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:43 - JS_Response.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:43 - Write to log.0 - 
+2024/01/07 19:57:43 - Write to log.0 - ------------> Linenr 1------------------------------
+2024/01/07 19:57:43 - Write to log.0 - Response from the Assistant
+2024/01/07 19:57:43 - Write to log.0 - 
+2024/01/07 19:57:43 - Write to log.0 - content_type = text
+2024/01/07 19:57:43 - Write to log.0 - content = The average salary of the users working in the company, considering only the users where the Name is not null, is $1,025.
+2024/01/07 19:57:43 - Write to log.0 - 
+2024/01/07 19:57:43 - Write to log.0 - ====================
+2024/01/07 19:57:43 - Make an OpenAI API Call - Response.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:43 - Write to log.0 - 
+2024/01/07 19:57:43 - Write to log.0 - ------------> Linenr 2------------------------------
+2024/01/07 19:57:43 - Write to log.0 - Response from the Assistant
+2024/01/07 19:57:43 - Write to log.0 - 
+2024/01/07 19:57:43 - Write to log.0 - content_type = text
+2024/01/07 19:57:43 - Write to log.0 - content = The data consists of four columns: ID, Name, Age, and Salary. Now, let's calculate the average salary of the users working in the company where the Name of the users is not null.
+2024/01/07 19:57:43 - Write to log.0 - 
+2024/01/07 19:57:43 - Write to log.0 - Note: We will consider only the rows where the Name column is not null for calculating the average salary.
+2024/01/07 19:57:43 - Write to log.0 - 
+2024/01/07 19:57:43 - Write to log.0 - ====================
+2024/01/07 19:57:43 - Write to log.0 - 
+2024/01/07 19:57:43 - Write to log.0 - ------------> Linenr 3------------------------------
+2024/01/07 19:57:43 - Write to log.0 - Response from the Assistant
+2024/01/07 19:57:43 - Write to log.0 - 
+2024/01/07 19:57:43 - Write to log.0 - content_type = text
+2024/01/07 19:57:43 - Write to log.0 - content = Sure, I can help you with that. Let's start by loading the data from the uploaded file and analyzing it to calculate the average salary.
+2024/01/07 19:57:43 - Write to log.0 - 
+2024/01/07 19:57:43 - Write to log.0 - First, let's read the data from the file and inspect the structure of the data.
+2024/01/07 19:57:43 - Write to log.0 - 
+2024/01/07 19:57:43 - Write to log.0 - ====================
+2024/01/07 19:57:43 - Parse the result.0 - Finished processing (I=4, O=0, R=1, W=4, U=0, E=0)
+2024/01/07 19:57:43 - Filter rows.0 - Finished processing (I=0, O=0, R=4, W=4, U=0, E=0)
+2024/01/07 19:57:43 - Dummy (do nothing).0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2024/01/07 19:57:43 - Write to log.0 - Finished processing (I=0, O=0, R=3, W=3, U=0, E=0)
+2024/01/07 19:57:43 - JSON output.0 - Finished processing (I=0, O=3, R=3, W=3, U=0, E=0)

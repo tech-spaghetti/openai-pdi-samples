@@ -1,16 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
   <name>OpenAIAssistant</name>
-  <description/>
-  <extended_description/>
+  <description>OpenAI + Pentaho Assistant Framework</description>
+  <extended_description>Copyright: Tech Spaghetti</extended_description>
   <job_version/>
+  <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
   <created_date>2023/12/17 21:57:19.928</created_date>
   <modified_user>-</modified_user>
   <modified_date>2023/12/18 00:05:10.293</modified_date>
   <parameters>
-    </parameters>
+    <parameter>
+      <name>OPENAI_ASSISTANT_CREATE</name>
+      <default_value>/v1/assistants</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>OPENAI_ASSISTANT_RUN</name>
+      <default_value>/v1/threads/&lt;THREAD_ID>/runs</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>OPENAI_ASSISTANT_RUN_RESPONSE</name>
+      <default_value>/v1/threads/&lt;THREAD_ID>/messages</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>OPENAI_ASSISTANT_RUN_STATUS</name>
+      <default_value>/v1/threads/&lt;THREAD_ID>/runs/&lt;RUN_ID></default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>OPENAI_ASSISTANT_THREAD</name>
+      <default_value>/v1/threads</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>OPENAI_ASSISTANT_THREAD_MSG</name>
+      <default_value>/v1/threads/&lt;THREAD_ID>/messages</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>OPENAI_CHAT_COMPLETION</name>
+      <default_value>/v1/chat/completions</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>OPENAI_LIST_MODEL</name>
+      <default_value>/v1/models</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>OPENAI_UPLOAD_FILES</name>
+      <default_value>/v1/files</default_value>
+      <description/>
+    </parameter>
+  </parameters>
   <slaveservers>
     </slaveservers>
   <job-log-table>
@@ -372,7 +418,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>48</xloc>
-      <yloc>208</yloc>
+      <yloc>192</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -383,8 +429,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1088</xloc>
-      <yloc>320</yloc>
+      <xloc>1072</xloc>
+      <yloc>192</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -400,47 +446,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>160</xloc>
-      <yloc>208</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>Create OpenAI Assistant</name>
-      <description/>
-      <type>TRANS</type>
-      <attributes/>
-      <specification_method>filename</specification_method>
-      <trans_object_id/>
-      <filename>${Internal.Entry.Current.Directory}/CreateAssistant.ktr</filename>
-      <transname/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <clear_rows>N</clear_rows>
-      <clear_files>N</clear_files>
-      <set_logfile>Y</set_logfile>
-      <logfile>${Internal.Entry.Current.Directory}/logs/openai-pdi-assistant</logfile>
-      <logext>log</logext>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
-      <cluster>N</cluster>
-      <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <create_parent_folder>N</create_parent_folder>
-      <logging_remote_work>N</logging_remote_work>
-      <run_configuration>Pentaho local</run_configuration>
-      <suppress_result_data>N</suppress_result_data>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>512</xloc>
-      <yloc>160</yloc>
+      <xloc>144</xloc>
+      <yloc>192</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -478,7 +485,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>512</xloc>
+      <xloc>416</xloc>
       <yloc>256</yloc>
       <attributes_kjc/>
     </entry>
@@ -517,8 +524,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>768</xloc>
-      <yloc>208</yloc>
+      <xloc>640</xloc>
+      <yloc>192</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -531,8 +538,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
-      <yloc>208</yloc>
+      <xloc>528</xloc>
+      <yloc>192</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -570,8 +577,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1088</xloc>
-      <yloc>208</yloc>
+      <xloc>944</xloc>
+      <yloc>192</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -607,8 +614,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>928</xloc>
-      <yloc>208</yloc>
+      <xloc>784</xloc>
+      <yloc>192</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -631,8 +638,8 @@
       <parallel>Y</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>320</xloc>
-      <yloc>208</yloc>
+      <xloc>304</xloc>
+      <yloc>192</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -648,8 +655,45 @@ Current value: ${OPENAI_API_KEY}</logmessage>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>320</xloc>
-      <yloc>320</yloc>
+      <xloc>304</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Create Assistant &amp; Load Custom Data</name>
+      <description/>
+      <type>JOB</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <job_object_id/>
+      <filename>${Internal.Entry.Current.Directory}/AssistantCreation.kjb</filename>
+      <jobname/>
+      <directory/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>Y</set_logfile>
+      <logfile>${Internal.Entry.Current.Directory}/logs/openai-pdi-assistant</logfile>
+      <logext>log</logext>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <expand_remote_job>N</expand_remote_job>
+      <create_parent_folder>N</create_parent_folder>
+      <pass_export>N</pass_export>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>416</xloc>
+      <yloc>112</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
@@ -662,15 +706,6 @@ Current value: ${OPENAI_API_KEY}</logmessage>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>Create OpenAI Assistant</from>
-      <to>Sync for 5s</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
     </hop>
     <hop>
       <from>Sync for 5s</from>
@@ -728,15 +763,6 @@ Current value: ${OPENAI_API_KEY}</logmessage>
     </hop>
     <hop>
       <from>Check if API Key is available?</from>
-      <to>Create OpenAI Assistant</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Check if API Key is available?</from>
       <to>Create Thread</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -753,13 +779,31 @@ Current value: ${OPENAI_API_KEY}</logmessage>
       <evaluation>N</evaluation>
       <unconditional>N</unconditional>
     </hop>
+    <hop>
+      <from>Check if API Key is available?</from>
+      <to>Create Assistant &amp; Load Custom Data</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Create Assistant &amp; Load Custom Data</from>
+      <to>Sync for 5s</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
   </hops>
   <notepads>
     <notepad>
-      <note>OpenAI Assistant Master Job</note>
-      <xloc>352</xloc>
-      <yloc>48</yloc>
-      <width>186</width>
+      <note>OpenAI + Pentaho Assistant Framework Master Job</note>
+      <xloc>304</xloc>
+      <yloc>16</yloc>
+      <width>322</width>
       <heigth>26</heigth>
       <fontname>.AppleSystemUIFont</fontname>
       <fontsize>13</fontsize>
@@ -776,6 +820,62 @@ Current value: ${OPENAI_API_KEY}</logmessage>
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>1. Read the data from property files.
+2. Upload the custom data.
+3. Create an Assistant
+4. Create a Thread
+5. Run the Assistant
+6. Check for the run assistant.
+7. Display Message.</note>
+      <xloc>16</xloc>
+      <yloc>336</yloc>
+      <width>227</width>
+      <heigth>122</heigth>
+      <fontname>.AppleSystemUIFont</fontname>
+      <fontsize>13</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>213</backgroundcolorred>
+      <backgroundcolorgreen>213</backgroundcolorgreen>
+      <backgroundcolorblue>213</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Copyright: Tech Spaghetti</note>
+      <xloc>896</xloc>
+      <yloc>352</yloc>
+      <width>168</width>
+      <heigth>26</heigth>
+      <fontname>.AppleSystemUIFont</fontname>
+      <fontsize>13</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>254</fontcolorred>
+      <fontcolorgreen>255</fontcolorgreen>
+      <fontcolorblue>255</fontcolorblue>
+      <backgroundcolorred>121</backgroundcolorred>
+      <backgroundcolorgreen>128</backgroundcolorgreen>
+      <backgroundcolorblue>255</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
-  <attributes/>
+  <attributes>
+    <group>
+      <name>JobRestart</name>
+      <attribute>
+        <key>UniqueConnections</key>
+        <value>N</value>
+      </attribute>
+    </group>
+  </attributes>
 </job>

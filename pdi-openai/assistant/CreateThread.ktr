@@ -2,10 +2,11 @@
 <transformation>
   <info>
     <name>CreateThread</name>
-    <description/>
-    <extended_description/>
+    <description>Create Thread</description>
+    <extended_description>Copyright: Tech Spaghetti</extended_description>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -519,6 +520,41 @@ Set the THREAD_ID as a variable.</note>
       <enabled>Y</enabled>
     </hop>
   </order>
+  <step>
+    <name>Check if the THREAD_ID is not pre-set?</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set the API URL &amp; TOKEN</send_true_to>
+    <send_false_to>Write to Log - Found THREAD_ID</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>OPENAI_ASSISTANT_THREAD_ID</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Get variables</name>
     <type>GetVariable</type>
@@ -1112,6 +1148,76 @@ Alert(str2);</jsScript_script>
     </GUI>
   </step>
   <step>
+    <name>Set variables - Use the ThreadID from Variable</name>
+    <type>SetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <field_name>OPENAI_ASSISTANT_THREAD_ID</field_name>
+        <variable_name>THREAD_ID</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
+        <default_value/>
+      </field>
+    </fields>
+    <use_formatting>Y</use_formatting>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Write to Log - Found THREAD_ID</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <loglevel>log_level_basic</loglevel>
+    <displayHeader>Y</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage>Found THREAD_ID in the Configuration File. 
+Skipping creation of the OpenAI Assistant Thread.</logmessage>
+    <fields>
+      <field>
+        <name>OPENAI_ASSISTANT_THREAD_ID</name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Write to log</name>
     <type>WriteToLog</type>
     <description/>
@@ -1187,111 +1293,6 @@ Alert(str2);</jsScript_script>
     <GUI>
       <xloc>352</xloc>
       <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Check if the THREAD_ID is not pre-set?</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Set the API URL &amp; TOKEN</send_true_to>
-    <send_false_to>Write to Log - Found THREAD_ID</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>OPENAI_ASSISTANT_THREAD_ID</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set variables - Use the ThreadID from Variable</name>
-    <type>SetVariable</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <field_name>OPENAI_ASSISTANT_THREAD_ID</field_name>
-        <variable_name>THREAD_ID</variable_name>
-        <variable_type>ROOT_JOB</variable_type>
-        <default_value/>
-      </field>
-    </fields>
-    <use_formatting>Y</use_formatting>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Write to Log - Found THREAD_ID</name>
-    <type>WriteToLog</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <loglevel>log_level_basic</loglevel>
-    <displayHeader>Y</displayHeader>
-    <limitRows>N</limitRows>
-    <limitRowsNumber>0</limitRowsNumber>
-    <logmessage>Found THREAD_ID in the Configuration File. 
-Skipping creation of the OpenAI Assistant Thread.</logmessage>
-    <fields>
-      <field>
-        <name>OPENAI_ASSISTANT_THREAD_ID</name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

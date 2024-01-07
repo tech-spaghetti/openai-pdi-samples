@@ -2,10 +2,11 @@
 <transformation>
   <info>
     <name>DisplayMessage</name>
-    <description/>
-    <extended_description/>
+    <description>Display Message</description>
+    <extended_description>Copyright: Tech Spaghetti</extended_description>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -492,6 +493,11 @@
       <to>Dummy (do nothing)</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Write to log</from>
+      <to>JSON output</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Dummy (do nothing)</name>
@@ -514,7 +520,7 @@
     </remotesteps>
     <GUI>
       <xloc>832</xloc>
-      <yloc>368</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -549,7 +555,7 @@
     </remotesteps>
     <GUI>
       <xloc>832</xloc>
-      <yloc>272</yloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -660,7 +666,57 @@
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>160</yloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>JSON output</name>
+    <type>JsonOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <outputValue>outputValue</outputValue>
+    <jsonBloc>data</jsonBloc>
+    <nrRowsInBloc>1</nrRowsInBloc>
+    <operation_type>writetofile</operation_type>
+    <compatibility_mode>N</compatibility_mode>
+    <encoding>UTF-8</encoding>
+    <addtoresult>N</addtoresult>
+    <file>
+      <name>${Internal.Entry.Current.Directory}/output/response</name>
+      <extention>json</extention>
+      <append>Y</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <create_parent_folder>N</create_parent_folder>
+      <DoNotOpenNewFileInit>N</DoNotOpenNewFileInit>
+      <servlet_output>N</servlet_output>
+    </file>
+    <fields>
+      <field>
+        <name>content</name>
+        <element>content</element>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1088</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -706,7 +762,7 @@ var url = OPENAI_HOST + replace(OPENAI_ASSISTANT_RUN_RESPONSE,"&lt;THREAD_ID>",T
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>272</yloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -770,7 +826,7 @@ var url = OPENAI_HOST + replace(OPENAI_ASSISTANT_RUN_RESPONSE,"&lt;THREAD_ID>",T
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>272</yloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -971,7 +1027,7 @@ var url = OPENAI_HOST + replace(OPENAI_ASSISTANT_RUN_RESPONSE,"&lt;THREAD_ID>",T
     </remotesteps>
     <GUI>
       <xloc>688</xloc>
-      <yloc>272</yloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1004,7 +1060,7 @@ var url = OPENAI_HOST + replace(OPENAI_ASSISTANT_RUN_RESPONSE,"&lt;THREAD_ID>",T
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>272</yloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1026,37 +1082,10 @@ var url = OPENAI_HOST + replace(OPENAI_ASSISTANT_RUN_RESPONSE,"&lt;THREAD_ID>",T
     <logmessage>Response from the Assistant</logmessage>
     <fields>
       <field>
-        <name>msg_id</name>
-      </field>
-      <field>
-        <name>object</name>
-      </field>
-      <field>
-        <name>created_at</name>
-      </field>
-      <field>
-        <name>thread_id_1</name>
-      </field>
-      <field>
-        <name>role</name>
-      </field>
-      <field>
         <name>content_type</name>
       </field>
       <field>
         <name>content</name>
-      </field>
-      <field>
-        <name>file_ids</name>
-      </field>
-      <field>
-        <name>assistant_id_1</name>
-      </field>
-      <field>
-        <name>run_id</name>
-      </field>
-      <field>
-        <name>metadata</name>
       </field>
     </fields>
     <attributes/>
@@ -1069,7 +1098,7 @@ var url = OPENAI_HOST + replace(OPENAI_ASSISTANT_RUN_RESPONSE,"&lt;THREAD_ID>",T
     </remotesteps>
     <GUI>
       <xloc>960</xloc>
-      <yloc>272</yloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

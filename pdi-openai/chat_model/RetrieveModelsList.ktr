@@ -2,8 +2,8 @@
 <transformation>
   <info>
     <name>RetrieveModelsList</name>
-    <description/>
-    <extended_description/>
+    <description>Retrieve Model List</description>
+    <extended_description>Copyright: Tech Spaghetti</extended_description>
     <trans_version/>
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>

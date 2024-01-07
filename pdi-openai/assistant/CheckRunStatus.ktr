@@ -2,10 +2,11 @@
 <transformation>
   <info>
     <name>CheckRunStatus</name>
-    <description/>
-    <extended_description/>
+    <description>Check Run Status</description>
+    <extended_description>Copyright: Tech Spaghetti</extended_description>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
