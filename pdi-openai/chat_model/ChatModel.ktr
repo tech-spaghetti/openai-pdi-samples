@@ -11,7 +11,7 @@
     <parameters>
       <parameter>
         <name>OPENAI_API_KEY</name>
-        <default_value>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</default_value>
+        <default_value/>
         <description/>
       </parameter>
       <parameter>
