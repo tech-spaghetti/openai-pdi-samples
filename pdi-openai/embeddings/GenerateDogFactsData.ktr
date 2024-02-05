@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>GenerateEmbeddings</name>
-    <description>Generate Embeddings</description>
+    <name>GenerateDogFactsData</name>
+    <description>Generate Random Dog Facts Data</description>
     <extended_description>@Copyright: Tech Spaghetti</extended_description>
     <trans_version/>
     <trans_type>Normal</trans_type>
@@ -10,19 +10,9 @@
     <directory>/</directory>
     <parameters>
       <parameter>
-        <name>OPENAI_API_KEY</name>
+        <name>OPEN_API_KEY</name>
         <default_value/>
-        <description>Provide the OpenAI API Key</description>
-      </parameter>
-      <parameter>
-        <name>OPENAI_EMBEDDING_ENDPOINT</name>
-        <default_value>/v1/embeddings</default_value>
-        <description>The endpoint of OpenAI to generate the embeddings calls</description>
-      </parameter>
-      <parameter>
-        <name>OPENAI_EMBEDDING_MODEL</name>
-        <default_value>text-embedding-3-small</default_value>
-        <description>Provide the OpenAI Embedding model of your choice</description>
+        <description/>
       </parameter>
     </parameters>
     <log>
@@ -451,13 +441,14 @@
   </info>
   <notepads>
     <notepad>
-      <note>Generating Embeddings from the OpenAI Embedding Model: ${OPENAI_EMBEDDING_MODEL}.
+      <note>This transformation generates 5 random facts about dogs.
+This generated data is stored as a CSV format for further use in the embeddings.
 
-This transformation reads the dog facts CSV data; call OpenAI Embeddings model and save it as a CSV Output.</note>
-      <xloc>208</xloc>
+The dog facts are generated from an open web API for demonstration purposes.</note>
+      <xloc>272</xloc>
       <yloc>32</yloc>
-      <width>682</width>
-      <heigth>58</heigth>
+      <width>499</width>
+      <heigth>74</heigth>
       <fontname>.AppleSystemUIFont</fontname>
       <fontsize>13</fontsize>
       <fontbold>N</fontbold>
@@ -476,49 +467,29 @@ This transformation reads the dog facts CSV data; call OpenAI Embeddings model a
   </notepads>
   <order>
     <hop>
-      <from>Read Dogfacts data</from>
-      <to>Get variables</to>
+      <from>Get random Dog Fact</from>
+      <to>Get the random fact</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get variables</from>
-      <to>JS_Build API Headers &amp; URL</to>
+      <from>Get the random fact</from>
+      <to>Fact ID</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>JS_Build API Headers &amp; URL</from>
-      <to>Check for OPENAI_API_KEY?</to>
+      <from>Fact ID</from>
+      <to>Save dog facts</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Check for OPENAI_API_KEY?</from>
-      <to>Call OpenAI Embeddings</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Check for OPENAI_API_KEY?</from>
-      <to>Write to log</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Write to log</from>
-      <to>Abort</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Call OpenAI Embeddings</from>
-      <to>JSON input</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>JSON input</from>
-      <to>Embeddings Output</to>
+      <from>Start</from>
+      <to>Get random Dog Fact</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Read Dogfacts data</name>
-    <type>CsvInput</type>
+    <name>Fact ID</name>
+    <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -527,44 +498,16 @@ This transformation reads the dog facts CSV data; call OpenAI Embeddings model a
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/data/dogfacts.csv</filename>
-    <filename_field/>
-    <rownum_field/>
-    <include_filename>N</include_filename>
-    <separator>|</separator>
-    <enclosure>"</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>Y</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <format>mixed</format>
-    <encoding/>
-    <fields>
-      <field>
-        <name>fact_id</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>£</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>-1</length>
-        <precision>0</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>fact</name>
-        <type>String</type>
-        <format/>
-        <currency>£</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-    </fields>
+    <valuename>fact_id</valuename>
+    <use_database>N</use_database>
+    <connection/>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -574,158 +517,13 @@ This transformation reads the dog facts CSV data; call OpenAI Embeddings model a
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
+      <xloc>688</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Get variables</name>
-    <type>GetVariable</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>OPENAI_API_KEY</name>
-        <variable>${OPENAI_API_KEY}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>OPENAI_EMBEDDING_MODEL</name>
-        <variable>${OPENAI_EMBEDDING_MODEL}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>OPENAI_EMBEDDING_ENDPOINT</name>
-        <variable>${OPENAI_EMBEDDING_ENDPOINT}</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>JS_Build API Headers &amp; URL</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-
-var content_type = "application/json";
-
-var authorization = "Bearer "+OPENAI_API_KEY;
-
-var url = "https://api.openai.com" + OPENAI_EMBEDDING_ENDPOINT;
-
-
-var _data = {}
-
-_data.input = fact;
-_data.model = OPENAI_EMBEDDING_MODEL;
-
-var data = JSON.stringify(_data);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>content_type</name>
-        <rename>content_type</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>authorization</name>
-        <rename>authorization</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>url</name>
-        <rename>url</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>data</name>
-        <rename>data</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Call OpenAI Embeddings</name>
+    <name>Get random Dog Fact</name>
     <type>Rest</type>
     <description/>
     <distribute>Y</distribute>
@@ -735,14 +533,14 @@ var data = JSON.stringify(_data);</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <applicationType>JSON</applicationType>
-    <method>POST</method>
-    <url/>
-    <urlInField>Y</urlInField>
+    <applicationType>TEXT PLAIN</applicationType>
+    <method>GET</method>
+    <url>http://dog-api.kinduff.com/api/facts?number=5</url>
+    <urlInField>N</urlInField>
     <dynamicMethod>N</dynamicMethod>
     <methodFieldName/>
-    <urlField>url</urlField>
-    <bodyField>data</bodyField>
+    <urlField/>
+    <bodyField/>
     <httpLogin/>
     <httpPassword>Encrypted </httpPassword>
     <proxyHost/>
@@ -752,11 +550,7 @@ var data = JSON.stringify(_data);</jsScript_script>
     <trustStorePassword>Encrypted </trustStorePassword>
     <headers>
       <header>
-        <field>authorization</field>
-        <name>Authorization</name>
-      </header>
-      <header>
-        <field>content_type</field>
+        <field>Content-Type</field>
         <name>Content-Type</name>
       </header>
     </headers>
@@ -779,194 +573,13 @@ var data = JSON.stringify(_data);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
+      <xloc>352</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Check for OPENAI_API_KEY?</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Call OpenAI Embeddings</send_true_to>
-    <send_false_to>Write to log</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>OPENAI_API_KEY</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Write to log</name>
-    <type>WriteToLog</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <loglevel>log_level_basic</loglevel>
-    <displayHeader>Y</displayHeader>
-    <limitRows>N</limitRows>
-    <limitRowsNumber>0</limitRowsNumber>
-    <logmessage>OPENAI_API_KEY is not found. Hence Aborting the OpenAI call.
-Please provide the API key in runtime.</logmessage>
-    <fields>
-      <field>
-        <name>OPENAI_API_KEY</name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Abort</name>
-    <type>Abort</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <row_threshold>0</row_threshold>
-    <message/>
-    <always_log_rows>Y</always_log_rows>
-    <abort_option>ABORT_WITH_ERROR</abort_option>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Embeddings Output</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <separator>|</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>${Internal.Entry.Current.Directory}/data/embeddings</name>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery/>
-    </file>
-    <fields>
-      <field>
-        <name>fact</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>embeddings</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1024</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>JSON input</name>
+    <name>Get the random fact</name>
     <type>JsonInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -989,7 +602,7 @@ Please provide the API key in runtime.</logmessage>
     <includeNulls>N</includeNulls>
     <rownum_field/>
     <file>
-      <name>${Internal.Entry.Current.Directory}/data/test_0.js</name>
+      <name/>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -997,8 +610,8 @@ Please provide the API key in runtime.</logmessage>
     </file>
     <fields>
       <field>
-        <name>embeddings</name>
-        <path>$.data[*].embedding</path>
+        <name>fact</name>
+        <path>$.facts[*]</path>
         <type>String</type>
         <format/>
         <currency/>
@@ -1006,7 +619,7 @@ Please provide the API key in runtime.</logmessage>
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <repeat>N</repeat>
       </field>
     </fields>
@@ -1031,7 +644,132 @@ Please provide the API key in runtime.</logmessage>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
+      <xloc>528</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Save dog facts</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <separator>|</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>${Internal.Entry.Current.Directory}/data/dogfacts</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery/>
+    </file>
+    <fields>
+      <field>
+        <name>fact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>fact</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>864</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Start</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>Content-Type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <field_null_if/>
+      </field>
+    </fields>
+    <data>
+      <line>
+        <item>application/json</item>
+      </line>
+    </data>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
