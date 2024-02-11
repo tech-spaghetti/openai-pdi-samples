@@ -442,6 +442,11 @@
       <filename>${Internal.Entry.Current.Directory}/config/settings.properties</filename>
       <file_variable_type>ROOT_JOB</file_variable_type>
       <fields>
+        <field>
+          <variable_name>CWD</variable_name>
+          <variable_value>${Internal.Entry.Current.Directory}</variable_value>
+          <variable_type>ROOT_JOB</variable_type>
+        </field>
       </fields>
       <parallel>N</parallel>
       <draw>Y</draw>

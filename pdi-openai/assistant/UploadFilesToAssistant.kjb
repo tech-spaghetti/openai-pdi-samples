@@ -392,13 +392,8 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <insertScript>Y</insertScript>
-      <script>CWD=`pwd`
-echo $CWD
-
-curl --silent ${OPENAI_HOST}${OPENAI_UPLOAD_FILES} \
-  -H "Authorization: Bearer ${OPENAI_API_KEY}" \
-  -F purpose="assistants" \
-  -F file="@$CWD/input/sample.csv" > $CWD/output/_temp_file_id.json</script>
+      <script>
+curl --silent ${OPENAI_HOST}${OPENAI_UPLOAD_FILES} -H "Authorization: Bearer ${OPENAI_API_KEY}" -F purpose="assistants" -F file="@.${OPENAI_ASSISTANT_FILE}" > .${OPENAI_ASSISTANT_TEMP_OUTPUT_FILE}</script>
       <loglevel>Basic</loglevel>
       <parallel>N</parallel>
       <draw>Y</draw>
